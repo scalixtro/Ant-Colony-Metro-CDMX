@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='route_style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <title>Metro Hormiga</title>
+</head>
+<body>
+    <h3>Ruta generada</h3>
+    <ul class="stations">
+        {% for station in stations %}
+        <li>{{ station }}</li>
+        <span class="material-symbols-outlined">
+            arrow_forward
+        </span>
+        {% endfor %}
+        <span class="material-symbols-outlined" style="font-size: 30px;">
+            done_outline
+        </span>
+    </ul>
+    <div class="back">
+        <a href="{{ url_for('index') }}">Generar nueva ruta</a>
+    </div>
+    <div>
+        {% include 'mapa_no_interaction.html' %}
+    </div>
+    <script src="{{url_for('static', filename='generate_route.js')}}"></script>
+</body>
+</html>

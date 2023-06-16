@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Metro Hormiga</title>
+</head>
+<body>
+    <div class="loading">
+        <div class="loading-prompt">
+            <div class="loader">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            <p>Generando tu ruta</p>
+        </div>
+    </div>
+    <header>
+        <h1>Colonia de Hormigas: Metro CDMX</h1>
+    </header>
+    <form action="{{ getRoute }}"  method="post" class="form-station">
+        <div>
+            <label for="start">Estacion de inicio:</label>
+            <input class="form-input" type="text" name="start" id="start" placeholder="{{start}}" required>
+        </div>
+        <div>
+            <label for="end">Estacion final:</label>
+            <input class="form-input" type="text" name="end" id="end" placeholder="{{end}}" required>
+        </div>
+
+        <button type="submit" id="calc-route" name="calc-route">Encontrar ruta</button>
+    </form>
+    <div>
+        {% include 'mapa.html' %}
+    </div>
+</body>
+</html>
