@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h3 {
+    text-align: center;
+}
+
+.stations {
+    margin-top: 20px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stations li {
+    margin: 0 15px;
+    font-size: 20px;
+    color: #3BC14A;
+}
+
+.back {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.back a {
+    padding: 10px;
+    text-decoration: none;
+    border: 1px solid black;
+    color: black
+}
+
+.back a:hover {
+    background-color: rgba(78, 155, 249, 0.5);
+}
+
+.back a:active {
+    background-color: rgba(78, 155, 249, 1);
+}

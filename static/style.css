@@ -1,0 +1,443 @@
+:root {
+    --color-bg: #eaeaea;
+    --color-loader: #222;
+    --loader-size: 50px;
+    --loader-speed: 500ms;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.loading {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 100;
+    background-color: rgba(173, 211, 198, 0.5);
+}
+
+.loading-prompt {
+    width: 300px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: calc(100vw / 2 - 150px);
+    top: calc(100vh/2 - 50px);
+    border: 5px solid #326273;
+    border-radius: 10px;
+    background-color: rgba(78, 155, 249, 0.5);
+}
+
+.loading-prompt p {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.loader {
+    --loader-height: calc(var(--loader-size) / 7);
+    display: flex;
+    position: relative;
+}
+
+.loader::before {
+    content: '';
+    position: absolute;
+}
+
+.loader::before,
+.loader > span {
+    display: block;
+    width: var(--loader-height);
+    height: var(--loader-height);
+    border-radius: 50%;
+    background: var(--color-loader);
+
+    animation-name: to-right;
+    animation-duration: var(--loader-speed);
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+.loader > span:nth-child(even) {
+    visibility: hidden;
+}
+.loader > span:first-child {
+    animation-name: scale-up;
+}
+.loader > span:last-child {
+    animation-name: scale-up;
+    animation-direction: reverse;
+}
+
+@keyframes to-right {
+to {
+    transform: translateX(200%);
+}
+}
+@keyframes scale-up {
+from {
+    transform: scale(0);
+}
+to {
+    transform: scale(1);
+}
+}
+
+body {
+    font-family: 'Rubik', Arial, sans-serif;
+}
+
+h1 {
+    font-weight: 500;
+    text-align: center;
+}
+
+.map {
+    position: absolute;
+    margin: 10px;
+    width: 1305px;
+    height: 889px;
+}
+
+.map .station {
+    width: 0px;
+    height: 0px;
+    position: relative;
+}
+
+.map .station-node {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    border: 4px solid black;
+    transition: all 1s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.map .station-node:hover {
+    cursor: pointer;
+    transform: scale(1.25);
+}
+
+.map .station p {
+    width: 100px;
+    position: relative;
+    font-weight: 500;
+}
+
+.line {
+    position: absolute;
+    z-index: -1;
+    /* width: calc(334px - 114px); */
+    height: 10px;
+    /* background-color: rgb(217, 38, 26); */
+    border-radius: 10px;
+    /* left: 192px; */
+    /* top: 119px; */
+    transform-origin: 5px 5px;
+    /* transform: rotate(90deg); */
+}
+
+.form-station {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-station > * {
+    display: inline-block;
+}
+
+.form-station div {
+    margin-right: 50px;
+}
+
+.form-station label {
+    margin-right: 5px;
+    font-weight: 500;
+}
+
+.form-input {
+    padding: 2px 1px;
+    background-color: #F3EFE0;
+    border: none;
+}
+
+.form-station button {
+    padding: 5px;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.form-station button:hover {
+    background-color: rgba(78, 155, 249, 0.5);
+    font-weight: 500;
+}
+
+.form-station button:active {
+    background-color: rgba(78, 155, 249, 1);
+}
+
+/* ESTACIONES DEL METRO */
+#elRosario {
+    left: 187px;
+    top: 114px;
+}
+#elRosario p {
+    position: absolute;
+    width: auto;
+    left: -80px;
+    top: 0;
+}
+
+#institutoPetroleo {
+    left: 471px;
+    top: 166px;
+}
+#institutoPetroleo p {
+    top: -40px;
+    left: -40px;
+    text-align: center;
+}
+
+#deportivo {
+    left: 600px;
+    top: 166px;
+}
+#deportivo p {
+    top: -40px;
+    left: -40px;
+    text-align: center;
+}
+
+#martinCarrera {
+    left: 839px;
+    top: 166px;
+}
+#martinCarrera p {
+    top: -40px;
+    left: -40px;
+    text-align: center;
+}
+
+#tacuba {
+    left: 187px;
+    top: 334px;
+}
+#tacuba p {
+    width: auto;
+    left: -60px;
+    text-align: center;
+}
+
+#tacubaya {
+    left: 187px;
+    top: 744px;
+}
+#tacubaya p {
+    width: auto;
+    left: -77px;
+    text-align: center;
+}
+
+#laRaza {
+    left: 547px;
+    top: 242px;
+}
+#laRaza p {
+    width: 70px;
+    left: -80px;
+    top: 0px;
+    text-align: center;
+}
+
+#consulado {
+    left: 839px;
+    top: 301px;
+}
+#consulado p {
+    width: 70px;
+    top: -10px;
+    left: 25px;
+    text-align: center;
+}
+
+#oceania {
+    left: 1019px;
+    top: 404px;
+}
+#oceania p {
+    width: 70px;
+    left: 25px;
+    text-align: center;
+}
+
+#pantitlan {
+    left: 1095px;
+    top: 694px;
+}
+#pantitlan p {
+    width: 70px;
+    left: 25px;
+    text-align: center;
+}
+
+#morelos {
+    left: 839px;
+    top: 415px;
+}
+#morelos p {
+    width: 70px;
+    left: 25px;
+    text-align: center;
+}
+
+#candelaria {
+    left: 839px;
+    top: 462px;
+}
+#candelaria p {
+    width: 70px;
+    left: -90px;
+    text-align: center;
+}
+
+#jamaica {
+    left: 839px;
+    top: 744px;
+}
+#jamaica p {
+    width: 70px;
+    top: 15px;
+    left: 20px;
+    text-align: center;
+}
+
+#santaAnita {
+    left: 839px;
+    top: 813px;
+}
+#santaAnita p {
+    width: 70px;
+    left: 10px;
+    text-align: center;
+}
+
+#chabacano {
+    left: 698px;
+    top: 744px;
+}
+#chabacano p {
+    width: 70px;
+    left: -80px;
+    top: 22px;
+    text-align: center;
+}
+
+#centroMedico {
+    left: 470px;
+    top: 744px;
+}
+#centroMedico p {
+    width: 70px;
+    left: -22px;
+    top: 20px;
+    text-align: center;
+}
+
+#guerrero {
+    left: 470px;
+    top: 376px;
+}
+#guerrero p {
+    width: 70px;
+    left: -75px;
+    text-align: center;
+}
+
+#hidalgo {
+    left: 470px;
+    top: 421px;
+}
+#hidalgo p {
+    width: 70px;
+    left: -65px;
+    top: 20px;
+    text-align: center;
+}
+
+#balderas {
+    left: 470px;
+    top: 575px;
+}
+#balderas p {
+    width: 70px;
+    left: -70px;
+    top: -10px;
+    text-align: center;
+}
+
+#bellasArtes {
+    left: 570px;
+    top: 421px;
+}
+#bellasArtes p {
+    width: 70px;
+    left: 20px;
+    top: -15px;
+    text-align: center;
+}
+
+#pinoSuarez {
+    left: 698px;
+    top: 575px;
+}
+#pinoSuarez p {
+    width: 70px;
+    left: 10px;
+    top: 10px;
+    text-align: center;
+}
+
+#garibaldi {
+    left: 570px;
+    top: 376px;
+}
+#garibaldi p {
+    width: 70px;
+    left: -25px;
+    top: -20px;
+    text-align: center;
+}
+
+#saltoAgua {
+    left: 570px;
+    top: 575px;
+}
+#saltoAgua p {
+    width: 70px;
+    left: -60px;
+    top: 25px;
+    text-align: center;
+}
+
+#sanLazaro {
+    left: 886px;
+    top: 460px;
+}
+#sanLazaro p {
+    width: 70px;
+    left: 30px;
+    text-align: center;
+}
